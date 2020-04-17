@@ -1,4 +1,7 @@
-﻿using System.IO;
+﻿using System.Linq;
+using System.Reflection;
+using System.Resources;
+using System.IO;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -37,8 +40,15 @@ namespace GameOfLife
                 _data[i] = Color.White;
 
             _rectTexture.SetData(_data);
+            
+            var resNames = Assembly.GetEntryAssembly().GetManifestResourceNames();
+            var resStream = Assembly.GetEntryAssembly().GetManifestResourceStream(resNames.First(n => n.EndsWith("space_age.ttf")));
+            var resBuffer = new byte[resStream.Length];
+            resStream.Read(resBuffer, 0, resBuffer.Length);
+            resStream.Close();
 
-            _spriteFont = SpriteFontPlus.DynamicSpriteFont.FromTtf(File.ReadAllBytes(@"Fonts/space_age.ttf"), 10);
+            //_spriteFont = SpriteFontPlus.DynamicSpriteFont.FromTtf(File.ReadAllBytes(@"Fonts/space_age.ttf"), 10);
+            _spriteFont = SpriteFontPlus.DynamicSpriteFont.FromTtf(resBuffer, 10);
 
             base.Initialize();
         }
