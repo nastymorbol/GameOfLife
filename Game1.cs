@@ -6,9 +6,11 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SpriteFontPlus;
+using Nez;
+
 namespace GameOfLife
 {
-    public class Game1 : Game
+    public class Game1 : Core
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -46,9 +48,10 @@ namespace GameOfLife
             var resBuffer = new byte[resStream.Length];
             resStream.Read(resBuffer, 0, resBuffer.Length);
             resStream.Close();
-
+          
             //_spriteFont = SpriteFontPlus.DynamicSpriteFont.FromTtf(File.ReadAllBytes(@"Fonts/space_age.ttf"), 10);
             _spriteFont = SpriteFontPlus.DynamicSpriteFont.FromTtf(resBuffer, 10);
+
 
             base.Initialize();
         }

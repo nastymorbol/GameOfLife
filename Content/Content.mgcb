@@ -13,3 +13,13 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin Fonts/space_age.ttf
+/copy:Fonts/space_age.ttf
+
+#begin Fonts/SpaceAge.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/SpaceAge.spritefont
+
